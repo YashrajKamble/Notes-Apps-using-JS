@@ -18,6 +18,7 @@ createBtn.addEventListener("click", () => {
     inputBox.setAttribute("contenteditable", "true");
     img.src = "images/delete.png";
     notesContainer.appendChild(inputBox).appendChild(img);
+    updateStorage();
 })
 
 notesContainer.addEventListener("click", function (e) {
@@ -27,7 +28,7 @@ notesContainer.addEventListener("click", function (e) {
     }
     else if (e.target.tagName === "p") {
         notes = document.querySelectorAll(".input-box");
-        notes.forEach = (nt => {
+        notes.forEach(nt => {
             nt.onkeyup = function () {
                 updateStorage();
             }
@@ -38,5 +39,6 @@ document.addEventListener("keydown", event => {
     if (event.key === "Enter") {
         document.execCommand("insertLineBreak");
         event.preventDefault();
+        updateStorage();
     }
 })
